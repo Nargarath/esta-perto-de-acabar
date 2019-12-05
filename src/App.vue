@@ -3,7 +3,7 @@
     <h1>Está perto de acabar?</h1>
     <input type="number" v-model="timeToCount">
     <count-down :total-minutes="timeToCount" :timing="timing"/>
-    <button @click="toggleTimer()">Iniciar/parar</button>
+    <button @click="toggleTimer()">{{ toggleTimerText }}</button>
   </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
     return {
       timing: false,
       timeToCount: 0
+    }
+  },
+  computed: {
+    toggleTimerText() {
+      return !this.timing ? 'Iniciar' : 'Parar'
     }
   },
   methods: {

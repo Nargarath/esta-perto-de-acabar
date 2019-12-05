@@ -1,7 +1,10 @@
 <template>
   <div id="countDown">
-    <p id="message">{{ closeToOver ? 'Sim' : 'Não' }}</p>
-    <p id="timer">{{ time }}</p>
+    <div v-show="timing">
+      <p id="message">{{ closeToOver ? 'Sim' : 'Não' }}</p>
+      <p id="timer">{{ time }}</p>
+    </div>
+    
     
   </div>
 </template>
@@ -36,7 +39,7 @@ export default {
   },
   computed: {
     closeToOver() {
-      return this.localTimeMinutes < 30;
+      return this.localTimeSeconds/60 < 30;
     },
     time() {
       const time = this.localTimeSeconds;
